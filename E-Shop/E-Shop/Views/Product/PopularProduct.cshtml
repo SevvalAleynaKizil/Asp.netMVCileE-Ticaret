@@ -1,0 +1,37 @@
+﻿<div class="recommended_items">
+    <h2 class="title text-center" style="color:black">POPÜLER ÜRÜNLERİMİZ</h2>
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @{
+                var active = "active";
+                for (int i = 0; i < ViewBag.popular.Count; i += 3)
+                {
+                    <div class="item @active">
+                        @for (int j = i; j < i + 3 && j < ViewBag.popular.Count; j++)
+                        {
+                            var item = ViewBag.popular[j];
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="~/Content/Image/@item.Image" width="290,5" height="205" alt="" />
+                                            <h2 style="color:black">@item.Price ₺</h2>
+                                            <p>@item.Name</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    active = "";
+                }
+            }
+        </div>
+        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div>
